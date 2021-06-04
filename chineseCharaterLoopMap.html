@@ -16,9 +16,9 @@ span {
 <script>
 async function translate()
 {
-	var b = " "+document.getElementById("myText").value+" ";
+	var stringToReplace = " "+document.getElementById("myText").value+" ";
 	//myText.style.fontFamily = "Impact,Charcoal,sans-serif";
-	const replacements=
+	const nextCharacterMap=
 			{
 				"阿":"啊","啊":"呵","呵":"锕","锕":"吖","吖":"阿",
 	"癌":"皑","皑":"捱","捱":"騃","騃":"癌",
@@ -1064,7 +1064,7 @@ async function translate()
 };
 	var j=0;
 	var c=0;
-	var linePrintLag = 1; //in milliseconds
+	var linePrintLag = 1000; //in milliseconds
 	const print = (text) =>
 	{
 		document.body.innerHTML = text.split('').map((char) => `<span>${char}</span>`).join('');
@@ -1082,32 +1082,15 @@ async function translate()
 
 
 
+
 let replacedString = '';
 
-for (let i = 0; i < b; i++) {
-   const currentCharacter = b[i];
+for (let i = 0; i < stringToReplace.length; i++) {
+   const currentCharacter = stringToReplace[i];
    const nextCharacter = nextCharacterMap[currentCharacter] || currentCharacter;
    replacedString = `${replacedString}${nextCharacter}`
 }
 print(replacedString);
-
-		//for(j=0;j<replacements.length;j++)
-		//{
-			//if(replacements[j][0]<replacements[j].length-1)
-			//{
-				//b=b.replaceAll(replacements[j][(replacements[j][0])],replacements[j][(1+replacements[j][0])]);
-				//replacements[j][0]++;
-				//print(b);
-			//}
-			//else if(replacements[j][0]==replacements[j].length-1)
-			//{
-				//b=b.replaceAll(replacements[j][(replacements[j][0])],replacements[j][1]);
-				//replacements[j][0]=1;
-				//print(b);
-			//}
-		//}
-
-
 
 
 
