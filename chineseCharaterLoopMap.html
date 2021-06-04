@@ -20,6 +20,8 @@ async function translate()
 	//myText.style.fontFamily = "Impact,Charcoal,sans-serif";
 	const nextCharacterMap=
 			{
+
+				"1":"2","2":"1",
 				"阿":"啊","啊":"呵","呵":"锕","锕":"吖","吖":"阿",
 	"癌":"皑","皑":"捱","捱":"騃","騃":"癌",
 	"矮":"蔼","蔼":"嗳","嗳":"霭","霭":"靄","靄":"矮",
@@ -1078,19 +1080,25 @@ async function translate()
 		}
 				);
 	}
+	let replacedString = '';
 	const replaceCharacters = (counter) => {
 
 
 
 
-let replacedString = '';
+
 
 for (let i = 0; i < stringToReplace.length; i++) {
-   const currentCharacter = stringToReplace[i];
+   const currentCharacter = stringToReplace[i];//good
    const nextCharacter = nextCharacterMap[currentCharacter] || currentCharacter;
    replacedString = `${replacedString}${nextCharacter}`
+	 //print(replacedString);
+	 //replacedString =stringToReplace.replaceAll(`${replacedString}${nextCharacter}`);
 }
 print(replacedString);
+
+
+
 
 
 
