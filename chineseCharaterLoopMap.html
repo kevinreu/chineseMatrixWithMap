@@ -16,12 +16,12 @@ span {
 <script>
 async function translate()
 {
-	var stringToReplace = " "+document.getElementById("myText").value+" ";
+	var stringToReplace = document.getElementById("myText").value;
 	//myText.style.fontFamily = "Impact,Charcoal,sans-serif";
 	const nextCharacterMap=
 			{
 
-				"1":"2","2":"1",
+				"1":"2","2":"3","3":"4","4":"5","5":"1",
 				"阿":"啊","啊":"呵","呵":"锕","锕":"吖","吖":"阿",
 	"癌":"皑","皑":"捱","捱":"騃","騃":"癌",
 	"矮":"蔼","蔼":"嗳","嗳":"霭","霭":"靄","靄":"矮",
@@ -1080,28 +1080,26 @@ async function translate()
 		}
 				);
 	}
-	let replacedString = '';
+	var replacedString = stringToReplace;
+
 	const replaceCharacters = (counter) => {
 
 
 
+		for (var i = 0; i < 90; i++)//i just made i<"a big number ie 90" and that made it iterate throught the map properly but i want to make it a more precice number
+		{
+			 //document.write(replacedString[i]);
+			 var currentCharacter = replacedString[i];//good
+			 var nextCharacter = nextCharacterMap[currentCharacter] || currentCharacter;
+			 replacedString = `${replacedString}${nextCharacter}`
+			 //stringToReplace= `${replacedString}${nextCharacter}`;
+			 print(replacedString);
+			 //replacedString =stringToReplace.replaceAll(`${replacedString}${nextCharacter}`);
+		}
+//for(var test=0;test<20;test++)
 
-
-
-for (let i = 0; i < stringToReplace.length; i++) {
-   const currentCharacter = stringToReplace[i];//good
-   const nextCharacter = nextCharacterMap[currentCharacter] || currentCharacter;
-   replacedString = `${replacedString}${nextCharacter}`
-	 //print(replacedString);
-	 //replacedString =stringToReplace.replaceAll(`${replacedString}${nextCharacter}`);
-}
-print(replacedString);
-
-
-
-
-
-
+	//document.write(replacedString);
+//print(stringToReplace);
 	}
 	var sleep = function(ms){
 		let now = Date.now(),
