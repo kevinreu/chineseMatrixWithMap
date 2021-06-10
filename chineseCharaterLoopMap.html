@@ -4,24 +4,56 @@
 <style>
 span {
 	display: inline-block ;
-	width: 16px;
-	height: 18px;
+	color:green;
+	width: 20px;
+	height: 20px;
+}
+
+p{
+	color:green;
+}
+
+body{
+	background-color: black;
+	font-size: 20px;
 }
 </style>
 </head>
 <body>
-<input type="text" id="myText" value="">
-<button onclick="window.translate()">Flash</button>
+<p> </p><input type="text" id="myText" value=""placeholder="kanji goes in this box">
+<form >
+<p>Set Difficulty</p><input type="number" id="myNumber" value="2">
+
+
+</form>
+<button onclick="window.translate();myFunctionVar();">Flash</button>
 <p id="demo"></p>
+<p>paste any Chinese or Japanese text into the box then press the button to make 10000 characters flash if they have the same pronunciation! if you know how to read basic chinese you should be able to read the result</p>
 <script>
+
+
+
+
+
+
+var difficulty=2;
+function myFunctionVar() {
+  difficulty = parseInt(document.getElementById("myNumber").value, 10);
+  }
+
+
+
+function setDifficulty()
+{
+	//difficulty=
+}
+
 async function translate()
 {
 	var stringToReplace = document.getElementById("myText").value;
 	//myText.style.fontFamily = "Impact,Charcoal,sans-serif";
 	const nextCharacterMap=
 			{
-
-				"1":"2","2":"3","3":"4","4":"5","5":"1",
 				'阿':'啊','啊':'呵','呵':'锕','锕':'吖','吖':'阿',
 '癌':'皑','皑':'捱','捱':'騃','騃':'癌',
 '矮':'蔼','蔼':'嗳','嗳':'霭','霭':'靄','靄':'矮',
@@ -1274,7 +1306,8 @@ async function translate()
 };
 	var j=0;
 	var c=0;
-	var linePrintLag = 60; //in milliseconds
+
+	var linePrintLag = 600; //in milliseconds
 	const print = (text) =>
 	{
 		document.body.innerHTML = text.split('').map((char) => `<span>${char}</span>`).join('');
@@ -1299,17 +1332,17 @@ async function translate()
 
 			 var currentCharacter = replacedString[i];//good
 			 var nextCharacter = nextCharacterMap[currentCharacter] || currentCharacter;
-			 replacedString = /*`${replacedString}${nextCharacter}`*/       replacedString.replaceAll(replacedString[i],`${nextCharacter}`)
-			 //stringToReplace= `${replacedString}${nextCharacter}`;
-			 //print(replacedString);
-			 //replacedString =stringToReplace.replaceAll(`${replacedString}${nextCharacter}`);
-		}
-		print(replacedString);
-		//document.write(replacedString[i]);
-//for(var test=0;test<20;test++)
+			 replacedString = replacedString.replaceAll(replacedString[i],`${nextCharacter}`)
+		 }
 
-	//document.write(replacedString);
-//print(stringToReplace);
+		 if(c%difficulty==0)
+		 {
+			 print(stringToReplace);
+		 }
+		 else
+		 {
+		print(replacedString);
+		 }
 	}
 	var sleep = function(ms){
 		let now = Date.now(),
@@ -1324,5 +1357,18 @@ async function translate()
 	}
 }
 </script>
+<p>
+<a href="http://neotranslate.xyz/"> Chinese Translator </a><br>
+<a href="http://spanish.neotranslate.xyz/"> Spanish Translator </a><br>
+<a href="http://french.neotranslate.xyz/"> French Translator </a><br>
+<a href="http://german.neotranslate.xyz/"> German Translator </a><br>
+<a href="http://Italian.neotranslate.xyz/"> Italian Translator </a><br>
+<a href="http://korean.neotranslate.xyz/"> Korean Translator </a><br>
+<a href="http://japanese.neotranslate.xyz/"> Japanese Translator </a><br>
+<a href="http://russian.neotranslate.xyz/"> Russian Translator </a><br>
+<a href="http://matrix.neotranslate.xyz/"> Matrix Translator </a><br>
+<a href="https://www.instagram.com/neokevin2.0/"> My instagram! </a><br>
+<a href="http://rainbow.neotranslate.xyz/"> <img src="https://media1.giphy.com/media/X0D7k2svLjfGtYgLlc/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media4.giphy.com/media/qXaRpOU4FE4O4oSh3p/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media1.giphy.com/media/f1Nb1MSeZ4wNdM6Y1w/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media2.giphy.com/media/6Fe4IvashCh3hVPNqZ/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media3.giphy.com/media/vw0FRh2nkbSsOQ5KS6/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media3.giphy.com/media/ZzCElU76pXBrtqywrq/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media0.giphy.com/media/sDTxYZzXHHgw69kq5M/giphy.gif" alt="" style="width:14px;height:18px;"> Text </a><br>
+</p>
 </body>
 </html>
