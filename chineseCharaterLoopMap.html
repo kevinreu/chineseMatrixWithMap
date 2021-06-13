@@ -1,5 +1,6 @@
 <html>
 <head>
+
 <meta charset="UTF-8">
 <style>
 span {
@@ -20,15 +21,17 @@ body{
 </style>
 </head>
 <body>
-<p> </p><input type="text" id="myText" value=""placeholder="kanji goes in this box">
+<p>paste any kanji here <input type="text" id="myText" value=""placeholder="kanji goes in this box"></p>
 <form >
-<p>Set Difficulty</p><input type="number" id="myNumber" value="2">
+<p>Set Difficulty <input type="number" id="myNumber" value="2"></p>
+<p>Set Speed in milliseconds</p><input type="number" id="speed" value="1000">
 
 
 </form>
-<button onclick="window.translate();myFunctionVar();">Flash</button>
+<button onclick="window.translate();setDifficulty();setSpeed();">Flash</button>
 <p id="demo"></p>
-<p>paste any Chinese or Japanese text into the box then press the button to make 10000 characters flash if they have the same pronunciation! if you know how to read basic chinese you should be able to read the result</p>
+<p>Paste any Chinese or Japanese text into the box then press the button to make 10000 characters flash if they have the same pronunciation! if you know how to read basic chinese you should be able to read the result</p>
+
 <script>
 
 
@@ -37,16 +40,17 @@ body{
 
 
 var difficulty=2;
-function myFunctionVar() {
-  difficulty = parseInt(document.getElementById("myNumber").value, 10);
+let linePrintLag = 600; //in milliseconds
+function setDifficulty()
+{
+   difficulty = parseInt(document.getElementById("myNumber").value, 10);
+  }
+function setSpeed()
+{
+	linePrintLag = parseInt(document.getElementById("speed").value, 10);
   }
 
 
-
-function setDifficulty()
-{
-	//difficulty=
-}
 
 async function translate()
 {
@@ -1307,7 +1311,7 @@ async function translate()
 	var j=0;
 	var c=0;
 
-	var linePrintLag = 600; //in milliseconds
+
 	const print = (text) =>
 	{
 		document.body.innerHTML = text.split('').map((char) => `<span>${char}</span>`).join('');
@@ -1337,6 +1341,9 @@ async function translate()
 
 		 if(c%difficulty==0)
 		 {
+
+			 //document.getElementById("span").style.color = "#" + ((1<<24)*Math.random() | 0).toString(16);
+
 			 print(stringToReplace);
 		 }
 		 else
@@ -1359,6 +1366,7 @@ async function translate()
 </script>
 <p>
 <a href="http://neotranslate.xyz/"> Chinese Translator </a><br>
+<a href="http://neo.neotranslate.xyz/"> Chinese Matrix Translator </a><br>
 <a href="http://spanish.neotranslate.xyz/"> Spanish Translator </a><br>
 <a href="http://french.neotranslate.xyz/"> French Translator </a><br>
 <a href="http://german.neotranslate.xyz/"> German Translator </a><br>
@@ -1369,6 +1377,8 @@ async function translate()
 <a href="http://matrix.neotranslate.xyz/"> Matrix Translator </a><br>
 <a href="https://www.instagram.com/neokevin2.0/"> My instagram! </a><br>
 <a href="http://rainbow.neotranslate.xyz/"> <img src="https://media1.giphy.com/media/X0D7k2svLjfGtYgLlc/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media4.giphy.com/media/qXaRpOU4FE4O4oSh3p/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media1.giphy.com/media/f1Nb1MSeZ4wNdM6Y1w/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media2.giphy.com/media/6Fe4IvashCh3hVPNqZ/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media3.giphy.com/media/vw0FRh2nkbSsOQ5KS6/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media3.giphy.com/media/ZzCElU76pXBrtqywrq/giphy.gif" alt="" style="width:14px;height:18px;"><img src="https://media0.giphy.com/media/sDTxYZzXHHgw69kq5M/giphy.gif" alt="" style="width:14px;height:18px;"> Text </a><br>
+<img src="https://media3.giphy.com/media/Kd4XzmxYR58eNC5OM1/giphy.gif"alt="">
 </p>
+
 </body>
 </html>
