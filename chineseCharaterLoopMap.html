@@ -24,7 +24,7 @@ body{
 <p>paste any kanji here <input type="text" id="myText" value=""placeholder="kanji goes in this box"></p>
 <form >
 <p>Set Difficulty <input type="number" id="myNumber" value="2"></p>
-<p>Set Speed in milliseconds</p><input type="number" id="speed" value="1000">
+<p>Set Speed in milliseconds<input type="number" id="speed" value="1000"></p>
 
 
 </form>
@@ -1331,7 +1331,7 @@ async function translate()
 
 
 
-		for (var i = 0; i < 9000; i++)//i just made i<"a big number ie 90" and that made it iterate throught the map properly but i want to make it a more precice number
+		for (var i = 0; i <= stringToReplace.length || i < 9000; i++)//i just made i<"a big number ie 90" and that made it iterate throught the map properly but i want to make it a more precice number
 		{
 
 			 var currentCharacter = replacedString[i];//good
